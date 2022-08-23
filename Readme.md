@@ -12,13 +12,13 @@ This example project is building a little window-based calculator with java-swin
 
 - varying width/height measures
 
-- option, to change the used prices for each marterial
+- option, to configure the used prices for each marterial
 
-- maybe the possibility to add new typs of material
+- maybe the possibility to add new types of material
 
 Calculation is as easy as `width * height * price`.
 
-Prices could basically be hold in a simple file, however later there could maybe come some database support
+Prices could basically be hold in a simple file, however later there maybe could come some database support.
 
 ## Not wanted
 
@@ -26,7 +26,7 @@ Prices could basically be hold in a simple file, however later there could maybe
 
 - how much is bought or sold
 
-- what were the earnings / losses
+- any calculation or tracking of earnings / losses
 
 ## How to run
 
@@ -43,7 +43,7 @@ javac -d bin @classes
 java -cp bin Main
 ```
 
-## What I worked with
+## Platforms developed on
 
 - Windows 11
 
