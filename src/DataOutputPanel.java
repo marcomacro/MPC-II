@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 class DataOutputPanel extends JPanel {
+
     private JLabel lbl = new JLabel();
     private JLabel resultLbl = new JLabel();
 
@@ -18,4 +19,5 @@ class DataOutputPanel extends JPanel {
     public void setResult(String result) {
         resultLbl.setText(result);
     }
+    
 }

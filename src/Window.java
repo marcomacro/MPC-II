@@ -7,8 +7,8 @@ public class Window {
     private JPanel mainPnl = new JPanel();
     private JPanel navPnl = new NavPanel(this);
     private JPanel contentPnl = new JPanel();
-    private JPanel calcPnl = new CalculationPanel(materialLst);
-    private JPanel configPnl = new ConfigurationPanel(materialLst);
+    private CalculationPanel calcPnl = new CalculationPanel(materialLst, this);
+    private ConfigurationPanel configPnl = new ConfigurationPanel(materialLst, this);
 
     public Window() {
         mpc_frame.setTitle("Material Price Calculator II");
@@ -37,6 +37,10 @@ public class Window {
             calcPnl.setVisible(false);
             configPnl.setVisible(true);
         }
+    }
+
+    public void recalc() {
+        calcPnl.recalc();
     }
 
 }
