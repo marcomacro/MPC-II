@@ -1,14 +1,16 @@
 import javax.swing.*;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Window {
 
-    private String materialLst [] = {"Papier", "Folie", "Plakat", "u.v.a."};
+    private SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
     private JPanel navPnl = new NavPanel(this);
     private JPanel contentPnl = new JPanel();
-    private CalculationPanel calcPnl = new CalculationPanel(materialLst, this);
-    private ConfigurationPanel configPnl = new ConfigurationPanel(materialLst, this);
+    private CalculationPanel calcPnl;
+    private ConfigurationPanel configPnl;
 
     public Window() {
         mpc_frame.setTitle("Material Price Calculator II");
@@ -23,10 +25,22 @@ public class Window {
         mainPnl.add(navPnl);
         mainPnl.add(contentPnl);
 
+        materialLst = new TreeMap<String, Float>();
+        fillMaterialLst();
+        calcPnl = new CalculationPanel(materialLst, this);
+        configPnl = new ConfigurationPanel(materialLst, this);
+
         contentPnl.setLayout( new javax.swing.BoxLayout(contentPnl, javax.swing.BoxLayout.X_AXIS) );
         contentPnl.add(calcPnl);
         contentPnl.add(configPnl);
         configPnl.setVisible(false);
+    }
+
+    private void fillMaterialLst() {
+        materialLst.put("Papier", 15.00f);
+        materialLst.put("Folie", 25.00f);
+        materialLst.put("Plakat", 35.50f);
+        materialLst.put("u.v.m.", -2.00f);
     }
 
     public void switchView(String clickedPnl) {

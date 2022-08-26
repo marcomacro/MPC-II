@@ -1,20 +1,22 @@
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
+import java.util.SortedMap;
 
 public class CalculationPanel extends JPanel {
 
     private Window mainWindow;
-    private JComboBox materialCmbBox;
+    private JComboBox<String> materialCmbBox;
     private DataInputPanel heightPnl;
     private DataInputPanel widthPnl;
     private DataOutputPanel resultPnl = new  DataOutputPanel("Price:", "89,90 €");
 
-    public CalculationPanel(String[] materialLst, Window w) {
+    public CalculationPanel(SortedMap<String, Float> materialLst, Window w) {
         mainWindow = w;
         
         heightPnl = new DataInputPanel("Height:", "70", mainWindow);
         widthPnl = new DataInputPanel("Width:", "70", mainWindow);
-        materialCmbBox = new JComboBox<>(materialLst);
+        materialCmbBox = new JComboBox<String>();
+        fillMaterialCmbBox(materialLst);
         materialCmbBox.setMaximumSize(new java.awt.Dimension(220, 25));
 
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
@@ -28,6 +30,12 @@ public class CalculationPanel extends JPanel {
         this.add(widthPnl);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 35) ));
         this.add(resultPnl);
+    }
+
+    private void fillMaterialCmbBox(SortedMap<String, Float> materialLst) {
+        for (String key : materialLst.keySet()) {
+            materialCmbBox.addItem(key);
+        }
     }
 
     public void recalc() {
