@@ -43,6 +43,10 @@ javac -d bin @classes
 java -cp bin Main
 ```
 
+## How to use
+
+- Please make sure to hit the enter key after every change made to any textfields to make the changes take effect in the program.
+
 ## Platforms developed on
 
 - Windows 11

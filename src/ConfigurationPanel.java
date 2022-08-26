@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 public class ConfigurationPanel extends JPanel {
 
     private Window mainWindow;
-    private ArrayList<JPanel> materialInputPnlLst = new ArrayList<JPanel>();
+    private ArrayList<DataInputPanel> materialInputPnlLst = new ArrayList<DataInputPanel>();
     
     public ConfigurationPanel(Window w) {
         mainWindow = w;
@@ -16,12 +16,18 @@ public class ConfigurationPanel extends JPanel {
         Iterator i = mainWindow.materialLst.entrySet().iterator();
         while (i.hasNext()) {
             Map.Entry m = (Map.Entry)i.next();
-            DataInputPanel inputPnl = new DataInputPanel(m.getKey() + ":", m.getValue().toString(), w);
+            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), w);
             materialInputPnlLst.add(inputPnl);
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
         }
         
+    }
+
+    void recalc() {
+        for (DataInputPanel pnl: materialInputPnlLst) {
+            mainWindow.materialLst.put(pnl.getKey() , pnl.getValue());
+        }
     }
 
 }

@@ -43,7 +43,7 @@ public class Window {
         materialLst.put("u.v.m.", -2.00f);
     }
 
-    public void switchView(String clickedPnl) {
+    void switchView(String clickedPnl) {
         if (clickedPnl == "Calculate") {
             calcPnl.setVisible(true);
             configPnl.setVisible(false);
@@ -53,7 +53,8 @@ public class Window {
         }
     }
 
-    public void recalc() {
+    void recalc() {
+        if (configPnl.isVisible()) configPnl.recalc();
         calcPnl.recalc();
     }
 
