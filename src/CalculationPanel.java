@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import java.util.SortedMap;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CalculationPanel extends JPanel {
 
@@ -10,14 +12,19 @@ public class CalculationPanel extends JPanel {
     private DataInputPanel widthPnl;
     private DataOutputPanel resultPnl = new  DataOutputPanel("Price:", "89,90 €");
 
-    public CalculationPanel(SortedMap<String, Float> materialLst, Window w) {
+    public CalculationPanel(Window w) {
         mainWindow = w;
         
         heightPnl = new DataInputPanel("Height:", "70", mainWindow);
         widthPnl = new DataInputPanel("Width:", "70", mainWindow);
         materialCmbBox = new JComboBox<String>();
-        fillMaterialCmbBox(materialLst);
+        fillMaterialCmbBox(mainWindow.materialLst);
         materialCmbBox.setMaximumSize(new java.awt.Dimension(220, 25));
+        materialCmbBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                recalc();
+            }
+        });
 
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
@@ -39,9 +46,10 @@ public class CalculationPanel extends JPanel {
     }
 
     public void recalc() {
+        Float p = mainWindow.materialLst.get(materialCmbBox.getSelectedItem());
         Float h = heightPnl.getValue();
         Float w = widthPnl.getValue();
-        resultPnl.setResult(Float.toString(h*w));
+        resultPnl.setResult(Float.toString( h * w * p ));
     }
 
 }

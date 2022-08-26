@@ -4,7 +4,7 @@ import java.util.TreeMap;
 
 public class Window {
 
-    private SortedMap<String, Float> materialLst;
+    SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
     private JPanel navPnl = new NavPanel(this);
@@ -27,8 +27,8 @@ public class Window {
 
         materialLst = new TreeMap<String, Float>();
         fillMaterialLst();
-        calcPnl = new CalculationPanel(materialLst, this);
-        configPnl = new ConfigurationPanel(materialLst, this);
+        calcPnl = new CalculationPanel(this);
+        configPnl = new ConfigurationPanel(this);
 
         contentPnl.setLayout( new javax.swing.BoxLayout(contentPnl, javax.swing.BoxLayout.X_AXIS) );
         contentPnl.add(calcPnl);
@@ -37,9 +37,9 @@ public class Window {
     }
 
     private void fillMaterialLst() {
-        materialLst.put("Papier", 15.00f);
-        materialLst.put("Folie", 25.00f);
-        materialLst.put("Plakat", 35.50f);
+        materialLst.put("Papier", 5.00f);
+        materialLst.put("Folie", 10.00f);
+        materialLst.put("Plakat", 15.50f);
         materialLst.put("u.v.m.", -2.00f);
     }
 
