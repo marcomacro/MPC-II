@@ -12,7 +12,7 @@ This example project is building a little window-based calculator with java-swin
 
 - varying width/height measures
 
-- option, to configure the used prices for each marterial
+- option, to configure the used prices for each material
 
 - maybe the possibility to add new types of material
 
