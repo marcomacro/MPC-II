@@ -38,6 +38,8 @@ public class Window {
         contentPnl.add(calcPnl);
         contentPnl.add(configPnl);
         configPnl.setVisible(false);
+
+        recalc();
     }
 
     private void fillMaterialLst() {

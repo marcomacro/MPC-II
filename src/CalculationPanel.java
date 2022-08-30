@@ -10,7 +10,7 @@ public class CalculationPanel extends JPanel {
     private JComboBox<String> materialCmbBox;
     private DataInputPanel heightPnl;
     private DataInputPanel widthPnl;
-    private DataOutputPanel resultPnl = new  DataOutputPanel("Price", "89,90 €");
+    private DataOutputPanel resultPnl = new  DataOutputPanel("Price");
 
     public CalculationPanel(Window w) {
         mainWindow = w;
