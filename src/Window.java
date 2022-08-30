@@ -4,6 +4,7 @@ import java.util.TreeMap;
 
 public class Window {
 
+    DataAccess dataAccess;
     SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
@@ -12,7 +13,9 @@ public class Window {
     private CalculationPanel calcPnl;
     private ConfigurationPanel configPnl;
 
-    public Window() {
+    public Window(DataAccess da) {
+        dataAccess = da;
+
         mpc_frame.setTitle("Material Price Calculator II");
         mpc_frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         mpc_frame.setSize(300, 400);
@@ -25,8 +28,9 @@ public class Window {
         mainPnl.add(navPnl);
         mainPnl.add(contentPnl);
 
-        materialLst = new TreeMap<String, Float>();
-        fillMaterialLst();
+        // materialLst = new TreeMap<String, Float>();
+        materialLst = da.readMaterials();
+        // fillMaterialLst();
         calcPnl = new CalculationPanel(this);
         configPnl = new ConfigurationPanel(this);
 

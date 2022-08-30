@@ -5,3 +5,5 @@ src/DataOutputPanel.java
 src/NavPanel.java
 src/CalculationPanel.java
 src/ConfigurationPanel.java
+src/DataAccess.java
+src/FileAccess.java

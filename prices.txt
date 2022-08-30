@@ -1,0 +1,7 @@
+current-material = 2
+height-value = 60
+width-value = 80
+Folie = 7.0
+Papier = 27.25
+Plakat = 15.999
+u.v.m. = -123

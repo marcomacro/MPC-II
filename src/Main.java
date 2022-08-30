@@ -1,6 +1,7 @@
 class Main {
     public static void main(String args[]) {
-        Window w = new Window();
+        DataAccess da = new FileAccess();
+        Window w = new Window(da);
     }
 
 }

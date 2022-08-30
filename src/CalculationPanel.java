@@ -15,8 +15,8 @@ public class CalculationPanel extends JPanel {
     public CalculationPanel(Window w) {
         mainWindow = w;
         
-        heightPnl = new DataInputPanel("Height", "70", mainWindow);
-        widthPnl = new DataInputPanel("Width", "70", mainWindow);
+        heightPnl = new DataInputPanel("Height", mainWindow.dataAccess.readValue("height-value"), mainWindow);
+        widthPnl = new DataInputPanel("Width", mainWindow.dataAccess.readValue("width-value"), mainWindow);
         materialCmbBox = new JComboBox<String>();
         fillMaterialCmbBox(mainWindow.materialLst);
         materialCmbBox.setMaximumSize(new java.awt.Dimension(220, 25));
@@ -43,6 +43,7 @@ public class CalculationPanel extends JPanel {
         for (String key : materialLst.keySet()) {
             materialCmbBox.addItem(key);
         }
+        materialCmbBox.setSelectedIndex(Integer.parseInt(mainWindow.dataAccess.readValue("current-material")));
     }
 
     void recalc() {
