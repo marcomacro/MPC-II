@@ -47,6 +47,8 @@ java -cp bin Main
 
 - Please make sure to hit the enter key after every change made to any textfields to make the changes take effect in the program.
 
+- Only supports ascii-characters (not utf8).
+
 ## Platforms developed on
 
 - Windows 11
