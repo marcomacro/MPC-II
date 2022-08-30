@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class Window {
 
@@ -28,9 +27,7 @@ public class Window {
         mainPnl.add(navPnl);
         mainPnl.add(contentPnl);
 
-        // materialLst = new TreeMap<String, Float>();
         materialLst = da.readMaterials();
-        // fillMaterialLst();
         calcPnl = new CalculationPanel(this);
         configPnl = new ConfigurationPanel(this);
 
@@ -40,13 +37,6 @@ public class Window {
         configPnl.setVisible(false);
 
         recalc();
-    }
-
-    private void fillMaterialLst() {
-        materialLst.put("Papier", 5.00f);
-        materialLst.put("Folie", 10.00f);
-        materialLst.put("Plakat", 15.50f);
-        materialLst.put("u.v.m.", -2.00f);
     }
 
     void switchView(String clickedPnl) {
