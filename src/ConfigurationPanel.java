@@ -18,11 +18,13 @@ public class ConfigurationPanel extends JPanel {
             Map.Entry m = (Map.Entry)i.next();
 
             DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString());
-            
+
             inputPnl.setActionListener( new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent ae) {
                     try {
-                        mainWindow.materialLst.put(m.getKey().toString(), Float.parseFloat(ae.getActionCommand()));
+                        float value = Float.parseFloat(ae.getActionCommand());
+                        if (value <= 0) throw new NumberFormatException();
+                        mainWindow.materialLst.put(m.getKey().toString(), value);
                     } catch (NumberFormatException nfe) {
                         inputPnl.setValue(Float.toString(mainWindow.materialLst.get(m.getKey())));
                     }
