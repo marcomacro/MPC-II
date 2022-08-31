@@ -16,7 +16,7 @@ public class ConfigurationPanel extends JPanel {
         Iterator i = mainWindow.materialLst.entrySet().iterator();
         while (i.hasNext()) {
             Map.Entry m = (Map.Entry)i.next();
-            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), w);
+            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), mainWindow);
             materialInputPnlLst.add(inputPnl);
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);

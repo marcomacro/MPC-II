@@ -3,7 +3,7 @@ import java.util.SortedMap;
 
 public class Window {
 
-    DataAccess dataAccess;
+    DataStore dataStore;
     SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
@@ -12,8 +12,8 @@ public class Window {
     private CalculationPanel calcPnl;
     private ConfigurationPanel configPnl;
 
-    public Window(DataAccess da) {
-        dataAccess = da;
+    public Window(DataStore ds) {
+        dataStore = ds;
 
         mpc_frame.setTitle("Material Price Calculator II");
         mpc_frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -27,7 +27,7 @@ public class Window {
         mainPnl.add(navPnl);
         mainPnl.add(contentPnl);
 
-        materialLst = da.readMaterials();
+        materialLst = ds.getMaterialLst();
         calcPnl = new CalculationPanel(this);
         configPnl = new ConfigurationPanel(this);
 
