@@ -16,18 +16,19 @@ public class ConfigurationPanel extends JPanel {
         Iterator i = mainWindow.materialLst.entrySet().iterator();
         while (i.hasNext()) {
             Map.Entry m = (Map.Entry)i.next();
-            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), mainWindow);
+
+            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), 
+            new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent ae) {
+                    mainWindow.materialLst.put(m.getKey().toString(), Float.parseFloat(ae.getActionCommand()));
+                    mainWindow.recalc();
+                }
+            });
             materialInputPnlLst.add(inputPnl);
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
         }
         
-    }
-
-    void recalc() {
-        for (DataInputPanel pnl: materialInputPnlLst) {
-            mainWindow.materialLst.put(pnl.getKey() , pnl.getValue());
-        }
     }
 
 }

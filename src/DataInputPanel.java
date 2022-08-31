@@ -1,16 +1,13 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class DataInputPanel extends JPanel implements ActionListener {
+class DataInputPanel extends JPanel {
 
-    private Window mainWindow;
     private String title;
     private JLabel lbl = new JLabel();
     private JTextField txtFld = new JTextField();
 
-    public DataInputPanel(String title, String defaultValue, Window w) {
-        mainWindow = w;
+    public DataInputPanel(String title, String defaultValue, ActionListener ae) {
         this.title = title;
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
 
@@ -20,12 +17,8 @@ class DataInputPanel extends JPanel implements ActionListener {
         txtFld.setText(defaultValue);
         txtFld.setPreferredSize(new java.awt.Dimension(50, 25));
         txtFld.setMaximumSize(new java.awt.Dimension(50, 25));
-        txtFld.addActionListener(this);
+        txtFld.addActionListener(ae);
         this.add(txtFld);
-    }
-
-    public void actionPerformed (ActionEvent ae) {
-        mainWindow.recalc();
     }
 
     String getKey() {

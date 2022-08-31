@@ -55,7 +55,6 @@ public class Window {
     }
 
     void recalc() {
-        if (configPnl.isVisible()) configPnl.recalc();
         calcPnl.recalc();
     }
 

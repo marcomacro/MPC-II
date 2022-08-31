@@ -15,15 +15,29 @@ public class CalculationPanel extends JPanel {
     public CalculationPanel(Window w) {
         mainWindow = w;
         
-        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.dataStore.getHeight()), mainWindow);
-        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.dataStore.getWidth()), mainWindow);
+        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.dataStore.getHeight()), 
+        new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                mainWindow.dataStore.setHeight(Integer.parseInt(ae.getActionCommand()));
+                recalc();
+            }
+        });
+
+        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.dataStore.getWidth()), 
+        new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                mainWindow.dataStore.setWidth(Integer.parseInt(ae.getActionCommand()));
+                recalc();
+            }
+        });
+
         materialCmbBox = new JComboBox<String>();
         fillMaterialCmbBox(mainWindow.materialLst);
         materialCmbBox.setMaximumSize(new java.awt.Dimension(220, 25));
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                recalc();
                 mainWindow.dataStore.setCurrentMaterial(materialCmbBox.getSelectedIndex());
+                recalc();
             }
         });
 
