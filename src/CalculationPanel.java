@@ -15,18 +15,26 @@ public class CalculationPanel extends JPanel {
     public CalculationPanel(Window w) {
         mainWindow = w;
         
-        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.dataStore.getHeight()), 
-        new ActionListener() {
+        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.dataStore.getHeight()));
+        heightPnl.setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                mainWindow.dataStore.setHeight(Integer.parseInt(ae.getActionCommand()));
+                try {
+                    mainWindow.dataStore.setHeight(Integer.parseInt(ae.getActionCommand()));
+                } catch (NumberFormatException nfe) {
+                    heightPnl.setValue(Integer.toString(mainWindow.dataStore.getHeight()));
+                }
                 recalc();
             }
         });
 
-        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.dataStore.getWidth()), 
-        new ActionListener() {
+        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.dataStore.getWidth()));
+        widthPnl.setActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                mainWindow.dataStore.setWidth(Integer.parseInt(ae.getActionCommand()));
+                try {
+                    mainWindow.dataStore.setWidth(Integer.parseInt(ae.getActionCommand()));
+                } catch (NumberFormatException nfe) {
+                    widthPnl.setValue(Integer.toString(mainWindow.dataStore.getWidth()));
+                }
                 recalc();
             }
         });

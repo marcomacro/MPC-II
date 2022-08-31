@@ -7,7 +7,7 @@ class DataInputPanel extends JPanel {
     private JLabel lbl = new JLabel();
     private JTextField txtFld = new JTextField();
 
-    public DataInputPanel(String title, String defaultValue, ActionListener ae) {
+    public DataInputPanel(String title, String defaultValue) {
         this.title = title;
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
 
@@ -17,7 +17,6 @@ class DataInputPanel extends JPanel {
         txtFld.setText(defaultValue);
         txtFld.setPreferredSize(new java.awt.Dimension(50, 25));
         txtFld.setMaximumSize(new java.awt.Dimension(50, 25));
-        txtFld.addActionListener(ae);
         this.add(txtFld);
     }
 
@@ -27,6 +26,14 @@ class DataInputPanel extends JPanel {
 
     float getValue() {
         return Float.parseFloat(txtFld.getText());
+    }
+
+    void setValue(String value) {
+        txtFld.setText(value);
+    }
+
+    void setActionListener (ActionListener ae) {
+        txtFld.addActionListener(ae);
     }
 
 }

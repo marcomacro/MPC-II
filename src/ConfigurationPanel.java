@@ -17,13 +17,19 @@ public class ConfigurationPanel extends JPanel {
         while (i.hasNext()) {
             Map.Entry m = (Map.Entry)i.next();
 
-            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString(), 
-            new java.awt.event.ActionListener() {
+            DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), m.getValue().toString());
+            
+            inputPnl.setActionListener( new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent ae) {
-                    mainWindow.materialLst.put(m.getKey().toString(), Float.parseFloat(ae.getActionCommand()));
+                    try {
+                        mainWindow.materialLst.put(m.getKey().toString(), Float.parseFloat(ae.getActionCommand()));
+                    } catch (NumberFormatException nfe) {
+                        inputPnl.setValue(Float.toString(mainWindow.materialLst.get(m.getKey())));
+                    }
                     mainWindow.recalc();
                 }
             });
+
             materialInputPnlLst.add(inputPnl);
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
