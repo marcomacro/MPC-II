@@ -77,7 +77,7 @@ public class CalculationPanel extends JPanel {
         Float p = mainWindow.materialLst.get(materialCmbBox.getSelectedItem());
         Float h = heightPnl.getValue();
         Float w = widthPnl.getValue();
-        resultPnl.setResult(Float.toString( h * w * p ));
+        resultPnl.setResult(String.format(java.util.Locale.US ,"%,.2f", h * w * p));
     }
 
 }
