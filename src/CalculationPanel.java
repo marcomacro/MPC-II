@@ -23,6 +23,7 @@ public class CalculationPanel extends JPanel {
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 recalc();
+                mainWindow.dataStore.setCurrentMaterial(materialCmbBox.getSelectedIndex());
             }
         });
 

@@ -21,6 +21,12 @@ public class Window {
         mpc_frame.setMinimumSize( new java.awt.Dimension(200, 300) );
         mpc_frame.add(mainPnl);
         mpc_frame.setVisible(true);
+        mpc_frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent we) {
+                System.out.println("Closed");
+                dataStore.save();
+            }
+        });
 
         mainPnl.setLayout( new javax.swing.BoxLayout(mainPnl, javax.swing.BoxLayout.Y_AXIS) );
         mainPnl.setMaximumSize( new java.awt.Dimension(500, 850) );
