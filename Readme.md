@@ -49,6 +49,8 @@ java -cp bin Main
 
 - Only supports ascii-characters (not utf8).
 
+- Program uses english number notation (Locale.US), such as `12,345,067.89`.
+
 ## Platforms developed on
 
 - Windows 11
