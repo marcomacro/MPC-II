@@ -68,9 +68,9 @@ class DataStore {
             tmp.write("width-value = " + width);
             tmp.write(System.lineSeparator());
 
-            java.util.Iterator materials = materialLst.entrySet().iterator();
+            java.util.Iterator<Map.Entry<String, Float>> materials = materialLst.entrySet().iterator();
             while (materials.hasNext()) {
-                Map.Entry m = (Map.Entry)materials.next();
+                Map.Entry<String, Float> m = (Map.Entry<String, Float>)materials.next();
                 tmp.write(m.getKey().toString() + " = " + m.getValue().toString());
                 tmp.write(System.lineSeparator());
             }

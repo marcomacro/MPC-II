@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JPanel;
 
@@ -13,9 +12,9 @@ public class ConfigurationPanel extends JPanel {
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
         
-        Iterator i = mainWindow.materialLst.entrySet().iterator();
+        java.util.Iterator<Map.Entry<String, Float>> i = mainWindow.materialLst.entrySet().iterator();
         while (i.hasNext()) {
-            Map.Entry m = (Map.Entry)i.next();
+            Map.Entry<String, Float> m = (Map.Entry<String, Float>)i.next();
 
             DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), String.format(java.util.Locale.US, "%,.2f", m.getValue()));
 
