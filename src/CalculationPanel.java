@@ -56,6 +56,7 @@ public class CalculationPanel extends JPanel {
         });
 
         choosenPriceLbl = new JLabel();
+        choosenPriceLbl.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
 
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
