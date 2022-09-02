@@ -7,7 +7,7 @@ public class Window {
     SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
-    private JPanel navPnl = new NavPanel(this);
+    private NavPanel navPnl = new NavPanel(this);
     private JPanel contentPnl = new JPanel();
     private CalculationPanel calcPnl;
     private ConfigurationPanel configPnl;
