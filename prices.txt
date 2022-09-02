@@ -1,7 +1,0 @@
-current-material = 3
-height-value = 15
-width-value = 2
-Folie = 4.0
-Papier = 5.0
-Plakat = 6.0
-u.v.m. = 7.0
