@@ -69,7 +69,7 @@ public class CalculationPanel extends JPanel {
         this.add(heightPnl);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 15) ));
         this.add(widthPnl);
-        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 35) ));
+        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 55) ));
         this.add(resultPnl);
     }
 
