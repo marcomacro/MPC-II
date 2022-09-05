@@ -12,11 +12,17 @@ class DataInputPanel extends JPanel {
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
 
         lbl.setText(title + ":");
+        lbl.setMinimumSize(new java.awt.Dimension(40, 25));
+        lbl.setPreferredSize(new java.awt.Dimension(60, 25));
+        lbl.setMaximumSize(new java.awt.Dimension(80, 25));
         this.add(lbl);
+
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(25, 0) ));
+        
         txtFld.setText(defaultValue);
-        txtFld.setPreferredSize(new java.awt.Dimension(50, 25));
-        txtFld.setMaximumSize(new java.awt.Dimension(50, 25));
+        txtFld.setMinimumSize(new java.awt.Dimension(35, 25));
+        txtFld.setPreferredSize(new java.awt.Dimension(55, 25));
+        txtFld.setMaximumSize(new java.awt.Dimension(75, 25));
         this.add(txtFld);
     }
 

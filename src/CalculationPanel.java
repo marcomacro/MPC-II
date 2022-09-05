@@ -47,7 +47,7 @@ public class CalculationPanel extends JPanel {
 
         materialCmbBox = new JComboBox<String>();
         fillMaterialCmbBox(mainWindow.materialLst);
-        materialCmbBox.setMaximumSize(new java.awt.Dimension(220, 25));
+        materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 mainWindow.dataStore.setCurrentMaterial(materialCmbBox.getSelectedIndex());
