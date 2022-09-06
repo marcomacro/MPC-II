@@ -3,6 +3,8 @@ import javax.swing.*;
 public class Window {
 
     private DataStore dataStore;
+    private java.awt.Color baseColor = new java.awt.Color(253, 253, 172);
+    private java.awt.Color emphasizedColor = new java.awt.Color(202, 202, 65);
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
     private NavPanel navPnl = new NavPanel(this);
@@ -43,6 +45,14 @@ public class Window {
 
     public DataStore getDataStore() {
         return dataStore;
+    }
+
+    public java.awt.Color getBaseColor() {
+        return baseColor;
+    }
+
+    public java.awt.Color getEmphasizedColor() {
+        return emphasizedColor;
     }
 
     void switchView(String clickedPnl) {

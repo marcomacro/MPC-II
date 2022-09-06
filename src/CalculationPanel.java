@@ -11,12 +11,13 @@ public class CalculationPanel extends JPanel {
     private JLabel choosenPriceLbl;
     private DataInputPanel heightPnl;
     private DataInputPanel widthPnl;
-    private DataOutputPanel resultPnl = new  DataOutputPanel("Price");
+    private DataOutputPanel resultPnl = new DataOutputPanel("Price");
 
     public CalculationPanel(Window w) {
         mainWindow = w;
         
         heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.getDataStore().getHeight()));
+        heightPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
         heightPnl.setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -31,6 +32,7 @@ public class CalculationPanel extends JPanel {
         });
         
         widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.getDataStore().getWidth()));
+        widthPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
         widthPnl.setActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -47,6 +49,7 @@ public class CalculationPanel extends JPanel {
         materialCmbBox = new JComboBox<String>();
         fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
         materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
+        materialCmbBox.setBackground(mainWindow.getBaseColor());
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 mainWindow.getDataStore().setCurrentMaterial(materialCmbBox.getSelectedIndex());
@@ -57,8 +60,11 @@ public class CalculationPanel extends JPanel {
         choosenPriceLbl = new JLabel();
         choosenPriceLbl.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
 
+        resultPnl.setBackground(mainWindow.getBaseColor());
+
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
+        this.setBackground(mainWindow.getBaseColor());
 
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
         this.add(materialCmbBox);

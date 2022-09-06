@@ -7,8 +7,10 @@ public class ConfigurationPanel extends JPanel {
     
     public ConfigurationPanel(Window w) {
         mainWindow = w;
+
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
+        this.setBackground(mainWindow.getBaseColor());
         
         java.util.TreeMap<String, Float> materialLst = mainWindow.getDataStore().getMaterialLst();
         java.util.Iterator<Map.Entry<String, Float>> i = materialLst.entrySet().iterator();
@@ -16,6 +18,7 @@ public class ConfigurationPanel extends JPanel {
             Map.Entry<String, Float> m = (Map.Entry<String, Float>)i.next();
 
             DataInputPanel inputPnl = new DataInputPanel(m.getKey().toString(), String.format(java.util.Locale.US, "%,.2f", m.getValue()));
+            inputPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
 
             inputPnl.setActionListener( new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent ae) {
