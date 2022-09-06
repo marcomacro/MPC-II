@@ -17,40 +17,40 @@ public class CalculationPanel extends JPanel {
     public CalculationPanel(Window w) {
         mainWindow = w;
         
-        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.dataStore.getHeight()));
+        heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.getDataStore().getHeight()));
         heightPnl.setActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
                     int value = Integer.parseInt(ae.getActionCommand());
                     if (value <= 0) throw new NumberFormatException();
-                    mainWindow.dataStore.setHeight(value);
+                    mainWindow.getDataStore().setHeight(value);
                 } catch (NumberFormatException nfe) {
-                    heightPnl.setValue(Integer.toString(mainWindow.dataStore.getHeight()));
+                    heightPnl.setValue(Integer.toString(mainWindow.getDataStore().getHeight()));
                 }
                 recalc();
             }
         });
         
-        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.dataStore.getWidth()));
+        widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.getDataStore().getWidth()));
         widthPnl.setActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
                     int value = Integer.parseInt(ae.getActionCommand());
                     if (value <= 0) throw new NumberFormatException();
-                    mainWindow.dataStore.setWidth(value);
+                    mainWindow.getDataStore().setWidth(value);
                 } catch (NumberFormatException nfe) {
-                    widthPnl.setValue(Integer.toString(mainWindow.dataStore.getWidth()));
+                    widthPnl.setValue(Integer.toString(mainWindow.getDataStore().getWidth()));
                 }
                 recalc();
             }
         });
 
         materialCmbBox = new JComboBox<String>();
-        fillMaterialCmbBox(mainWindow.dataStore.getMaterialLst());
+        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
         materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                mainWindow.dataStore.setCurrentMaterial(materialCmbBox.getSelectedIndex());
+                mainWindow.getDataStore().setCurrentMaterial(materialCmbBox.getSelectedIndex());
                 recalc();
             }
         });
@@ -77,11 +77,11 @@ public class CalculationPanel extends JPanel {
         for (String key : materialLst.keySet()) {
             materialCmbBox.addItem(key);
         }
-        materialCmbBox.setSelectedIndex(mainWindow.dataStore.getCurrentMaterial());
+        materialCmbBox.setSelectedIndex(mainWindow.getDataStore().getCurrentMaterial());
     }
 
     void recalc() {
-        Float p = mainWindow.dataStore.getMaterialLst().get(materialCmbBox.getSelectedItem());
+        Float p = mainWindow.getDataStore().getMaterialLst().get(materialCmbBox.getSelectedItem());
         Float h = heightPnl.getValue();
         Float w = widthPnl.getValue();
         choosenPriceLbl.setText(String.format(java.util.Locale.US ,"%,.2f", p));

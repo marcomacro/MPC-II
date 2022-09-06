@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Window {
 
-    DataStore dataStore;
+    private DataStore dataStore;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
     private NavPanel navPnl = new NavPanel(this);
@@ -39,6 +39,10 @@ public class Window {
         configPnl.setVisible(false);
 
         recalc();
+    }
+
+    public DataStore getDataStore() {
+        return dataStore;
     }
 
     void switchView(String clickedPnl) {
