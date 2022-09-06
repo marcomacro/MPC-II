@@ -1,7 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import java.util.SortedMap;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -73,7 +72,7 @@ public class CalculationPanel extends JPanel {
         this.add(resultPnl);
     }
 
-    private void fillMaterialCmbBox(SortedMap<String, Float> materialLst) {
+    private void fillMaterialCmbBox(java.util.SortedMap<String, Float> materialLst) {
         for (String key : materialLst.keySet()) {
             materialCmbBox.addItem(key);
         }
