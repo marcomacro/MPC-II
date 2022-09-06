@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 public class ConfigurationPanel extends JPanel {
 
     private Window mainWindow;
-    private ArrayList<DataInputPanel> materialInputPnlLst = new ArrayList<DataInputPanel>();
     
     public ConfigurationPanel(Window w) {
         mainWindow = w;
@@ -53,7 +52,6 @@ public class ConfigurationPanel extends JPanel {
                 }
             });
 
-            materialInputPnlLst.add(inputPnl);
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
         }
