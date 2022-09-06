@@ -43,7 +43,7 @@ public class ConfigurationPanel extends JPanel {
                         materialLst.put(m.getKey().toString(), value);
                         // Upate (formatted / localized) number in DataInputPanel
                         inputPnl.setValue(String.format(java.util.Locale.US, "%,.2f", materialLst.get(m.getKey())));
-                        // 
+                        // write the updated materialLst back to DataStore
                         mainWindow.getDataStore().setMaterialLst(materialLst);
                     } else {
                         // set the DataInputPanel back to the previous value, due to it not beeing parsable
