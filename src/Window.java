@@ -1,10 +1,8 @@
 import javax.swing.*;
-import java.util.SortedMap;
 
 public class Window {
 
     DataStore dataStore;
-    SortedMap<String, Float> materialLst;
     private JFrame mpc_frame = new JFrame();
     private JPanel mainPnl = new JPanel();
     private NavPanel navPnl = new NavPanel(this);
@@ -32,7 +30,6 @@ public class Window {
         mainPnl.add(navPnl);
         mainPnl.add(contentPnl);
 
-        materialLst = ds.getMaterialLst();
         calcPnl = new CalculationPanel(this);
         configPnl = new ConfigurationPanel(this);
 

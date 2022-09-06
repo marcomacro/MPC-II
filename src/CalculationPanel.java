@@ -46,7 +46,7 @@ public class CalculationPanel extends JPanel {
         });
 
         materialCmbBox = new JComboBox<String>();
-        fillMaterialCmbBox(mainWindow.materialLst);
+        fillMaterialCmbBox(mainWindow.dataStore.getMaterialLst());
         materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
         materialCmbBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -81,7 +81,7 @@ public class CalculationPanel extends JPanel {
     }
 
     void recalc() {
-        Float p = mainWindow.materialLst.get(materialCmbBox.getSelectedItem());
+        Float p = mainWindow.dataStore.getMaterialLst().get(materialCmbBox.getSelectedItem());
         Float h = heightPnl.getValue();
         Float w = widthPnl.getValue();
         choosenPriceLbl.setText(String.format(java.util.Locale.US ,"%,.2f", p));
