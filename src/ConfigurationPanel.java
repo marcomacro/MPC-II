@@ -28,7 +28,7 @@ public class ConfigurationPanel extends JPanel {
                         value = Float.parseFloat(ae.getActionCommand());
                         successfullyParsed = true;
                     } catch (NumberFormatException nfe) {
-                        // try to parse localizd string
+                        // try to parse localized string
                         try {
                             java.text.NumberFormat nf = java.text.NumberFormat.getInstance(java.util.Locale.US);
                             value = (nf.parse(ae.getActionCommand())).floatValue();
