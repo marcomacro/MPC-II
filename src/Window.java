@@ -17,7 +17,7 @@ public class Window {
         mpc_frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         mpc_frame.setSize(300, 400);
         mpc_frame.setMinimumSize( new java.awt.Dimension(200, 300) );
-        mpc_frame.add(mainPnl);
+        mpc_frame.setContentPane(mainPnl);
         mpc_frame.setVisible(true);
         mpc_frame.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent we) {
