@@ -44,6 +44,7 @@ class DataInputPanel extends JPanel {
 
     void setCustomizedColor(java.awt.Color base, java.awt.Color emphasized) {
         this.setBackground(base);
+        this.setBackground(java.awt.Color.CYAN);
         txtFld.setBackground(base);
         txtFld.setBorder(BorderFactory.createLineBorder(emphasized));
     }

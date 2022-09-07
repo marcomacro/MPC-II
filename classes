@@ -2,6 +2,7 @@ src/Main.java
 src/Window.java
 src/DataInputPanel.java
 src/DataOutputPanel.java
+src/AddMaterialPanel.java
 src/NavPanel.java
 src/CalculationPanel.java
 src/ConfigurationPanel.java

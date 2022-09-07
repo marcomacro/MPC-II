@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 public class ConfigurationPanel extends JPanel {
 
     private Window mainWindow;
+    private AddMaterialPanel addMaterialPnl;
     
     public ConfigurationPanel(Window w) {
         mainWindow = w;
@@ -57,7 +58,11 @@ public class ConfigurationPanel extends JPanel {
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
         }
+
+        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25)));
         
+        addMaterialPnl = new AddMaterialPanel(mainWindow);
+        this.add(addMaterialPnl);
     }
 
 }
