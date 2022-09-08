@@ -69,4 +69,11 @@ public class Window {
         calcPnl.recalc();
     }
 
+    void rebuildConfigPnl() {
+        configPnl.removeAll();
+        configPnl.build();
+        configPnl.revalidate();
+        configPnl.repaint();
+    }
+
 }

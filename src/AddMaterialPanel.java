@@ -56,6 +56,7 @@ class AddMaterialPanel extends JPanel {
 
                 if (successfullyParsed) {
                     mainWindow.getDataStore().getMaterialLst().put(materialName, value);
+                    mainWindow.rebuildConfigPnl();
                 }
             }
         });

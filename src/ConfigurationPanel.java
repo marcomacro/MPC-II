@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 public class ConfigurationPanel extends JPanel {
 
     private Window mainWindow;
-    private AddMaterialPanel addMaterialPnl;
     
     public ConfigurationPanel(Window w) {
         mainWindow = w;
@@ -13,6 +12,10 @@ public class ConfigurationPanel extends JPanel {
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
         this.setBackground(mainWindow.getBaseColor());
         
+        build();
+    }
+
+    void build() {
         java.util.TreeMap<String, Float> materialLst = mainWindow.getDataStore().getMaterialLst();
         java.util.Iterator<Map.Entry<String, Float>> i = materialLst.entrySet().iterator();
         while (i.hasNext()) {
@@ -61,9 +64,9 @@ public class ConfigurationPanel extends JPanel {
 
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25)));
         
-        addMaterialPnl = new AddMaterialPanel(mainWindow);
-        addMaterialPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
-        this.add(addMaterialPnl);
+        AddMaterialPanel addPnl = new AddMaterialPanel(mainWindow);
+        addPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
+        this.add(addPnl);
     }
 
 }
