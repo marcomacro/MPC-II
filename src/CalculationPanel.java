@@ -47,7 +47,7 @@ public class CalculationPanel extends JPanel {
         });
 
         materialCmbBox = new JComboBox<String>();
-        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
+        fillMaterialCmbBox();
         materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
         materialCmbBox.setBackground(mainWindow.getBaseColor());
         materialCmbBox.addActionListener(new ActionListener() {
@@ -78,19 +78,30 @@ public class CalculationPanel extends JPanel {
         this.add(resultPnl);
     }
 
-    private void fillMaterialCmbBox(java.util.SortedMap<String, Float> materialLst) {
-        for (String key : materialLst.keySet()) {
+    void fillMaterialCmbBox() {
+        materialCmbBox.removeAllItems();
+        for (String key : mainWindow.getDataStore().getMaterialLst().keySet()) {
             materialCmbBox.addItem(key);
         }
-        materialCmbBox.setSelectedIndex(mainWindow.getDataStore().getCurrentMaterial());
+        materialCmbBox.setSelectedIndex(mainWindow.getDataStore().getCurrentMaterial()); 
     }
 
     void recalc() {
-        Float p = mainWindow.getDataStore().getMaterialLst().get(materialCmbBox.getSelectedItem());
-        Float h = heightPnl.getValue();
-        Float w = widthPnl.getValue();
-        choosenPriceLbl.setText(String.format(java.util.Locale.US ,"%,.2f", p));
-        resultPnl.setResult(String.format(java.util.Locale.US ,"%,.2f", h * w * p));
+        /* Why a try-statement here ??
+         * After adding materials on the configPnl, the materialCmbBox is cleared out and after
+         * that refilled from DataStore (method above). When removing these items, 
+         * (this) recalc()-method is invoked and it fails to get the selected-Item, when or 'cuz
+         * this had been removed, which leads to that the code isn't able to calc the float p.
+          */
+        try {
+            Float p = mainWindow.getDataStore().getMaterialLst().get(materialCmbBox.getSelectedItem());
+            Float h = heightPnl.getValue();
+            Float w = widthPnl.getValue();
+            choosenPriceLbl.setText(String.format(java.util.Locale.US ,"%,.2f", p));
+            resultPnl.setResult(String.format(java.util.Locale.US ,"%,.2f", h * w * p));
+        } catch (Exception e) {
+            // System.out.println("Catched.");
+        }
     }
 
 }

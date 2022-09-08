@@ -74,6 +74,7 @@ public class Window {
         configPnl.build();
         configPnl.revalidate();
         configPnl.repaint();
+        calcPnl.fillMaterialCmbBox();
     }
 
 }
