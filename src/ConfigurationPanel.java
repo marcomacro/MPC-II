@@ -61,7 +61,8 @@ public class ConfigurationPanel extends JPanel {
 
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25)));
         
-        addMaterialPnl = new AddMaterialPanel(mainWindow);
+        addMaterialPnl = new AddMaterialPanel();
+        addMaterialPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
         this.add(addMaterialPnl);
     }
 

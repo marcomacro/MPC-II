@@ -17,7 +17,8 @@ class DataInputPanel extends JPanel {
         lbl.setMaximumSize(new java.awt.Dimension(80, 25));
         this.add(lbl);
 
-        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(25, 0) ));
+        // lbl.setBackground(java.awt.Color.CYAN);
+        // lbl.setOpaque(true);
         
         txtFld.setText(defaultValue);
         txtFld.setMinimumSize(new java.awt.Dimension(35, 25));
@@ -44,7 +45,6 @@ class DataInputPanel extends JPanel {
 
     void setCustomizedColor(java.awt.Color base, java.awt.Color emphasized) {
         this.setBackground(base);
-        this.setBackground(java.awt.Color.CYAN);
         txtFld.setBackground(base);
         txtFld.setBorder(BorderFactory.createLineBorder(emphasized));
     }
