@@ -2,8 +2,8 @@ import javax.swing.*;
 
 class DataInputPanel extends JPanel {
 
-    private JLabel inputLbl = new JLabel(); // name of what to read in
-    private JTextField inputTxtFld = new JTextField(); // value to read in
+    private JLabel inputLbl; // name of what to read in
+    private JTextField inputTxtFld; // value to read in
 
     public DataInputPanel(String labeling, String defaultInput) {
 
@@ -11,12 +11,14 @@ class DataInputPanel extends JPanel {
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
 
         // set up inputLbl
+        inputLbl = new JLabel();
         inputLbl.setText(labeling + ":");
         inputLbl.setMinimumSize(new java.awt.Dimension(40, 25));
         inputLbl.setPreferredSize(new java.awt.Dimension(60, 25));
         inputLbl.setMaximumSize(new java.awt.Dimension(80, 25));
         
         // set up inputTxtFld
+        inputTxtFld = new JTextField();
         inputTxtFld.setText(defaultInput);
         inputTxtFld.setMinimumSize(new java.awt.Dimension(35, 25));
         inputTxtFld.setPreferredSize(new java.awt.Dimension(55, 25));

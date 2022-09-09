@@ -15,7 +15,7 @@ public class NavPanel extends JPanel implements java.awt.event.ActionListener {
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
         this.setMaximumSize( new Dimension(500, 50) );
 
-        // set up CalculationBtn
+        // set up calculationBtn
         calculationBtn = new JButton("Calculate");
 
         calculationBtn.setMinimumSize( new Dimension(75, 50) );
@@ -28,7 +28,7 @@ public class NavPanel extends JPanel implements java.awt.event.ActionListener {
         
         calculationBtn.addActionListener(this);
         
-        // set up ConfigBtn
+        // set up configBtn
         configBtn  = new JButton("Config");
         
         configBtn.setMinimumSize( new Dimension(75, 50) );

@@ -1,44 +1,40 @@
+import java.awt.Dimension;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-class AddMaterialPanel extends JPanel {
+class DataAddPanel extends JPanel {
 
-    private Window mainWindow;
-    private JTextField nameTxtFld;
-    private JTextField priceTxtFld;
-    private JButton addBtn;
+    private JTextField nameTxtFld; // name of what to add
+    private JTextField priceTxtFld; // price of added
+    private JButton addBtn; //confirm
 
-    public AddMaterialPanel(Window w) {
+    public DataAddPanel(Window w) {
 
-        mainWindow = w;
+        Window mainWindow = w;
         
+        // set up this DataAddPanel
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS));
 
+        // set up nameTxtFld
         nameTxtFld = new JTextField("Material ...");
-        nameTxtFld.setMinimumSize(new java.awt.Dimension(35, 25));
-        nameTxtFld.setPreferredSize(new java.awt.Dimension(55, 25));
-        nameTxtFld.setMaximumSize(new java.awt.Dimension(75, 25));
-        this.add(nameTxtFld);
-
-        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(25, 0) ));
+        nameTxtFld.setMinimumSize( new Dimension(35, 25) );
+        nameTxtFld.setPreferredSize( new Dimension(55, 25) );
+        nameTxtFld.setMaximumSize( new Dimension(75, 25) );
         
+        // set up priceTxtFld
         priceTxtFld = new JTextField("123.45");
-        priceTxtFld.setMinimumSize(new java.awt.Dimension(35, 25));
-        priceTxtFld.setPreferredSize(new java.awt.Dimension(55, 25));
-        priceTxtFld.setMaximumSize(new java.awt.Dimension(75, 25));
-        this.add(priceTxtFld);
-
-        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(25, 0) ));
-
+        priceTxtFld.setMinimumSize(new Dimension(35, 25));
+        priceTxtFld.setPreferredSize(new Dimension(55, 25));
+        priceTxtFld.setMaximumSize(new Dimension(75, 25));
+        
+        // set up addBtn
         addBtn = new JButton("+");
-        addBtn.setMaximumSize( new java.awt.Dimension(45, 25) );
-        addBtn.addActionListener( new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
+        addBtn.setMaximumSize( new Dimension(45, 25) );
+        addBtn.addActionListener( new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
                 String materialName = nameTxtFld.getText();
                 boolean successfullyParsed = false;
                 float value = -1;
-
+                
                 // try to parse unformatted string
                 try {
                     value = Float.parseFloat(priceTxtFld.getText());
@@ -53,15 +49,23 @@ class AddMaterialPanel extends JPanel {
                         ;
                     }     
                 }
-
+                
                 if (successfullyParsed) {
                     mainWindow.getDataStore().getMaterialLst().put(materialName, value);
                     mainWindow.rebuildConfigPnl();
                 }
             }
         });
+        
+        // populate this DataAddPanel
+        this.add(nameTxtFld);
+        this.add(javax.swing.Box.createRigidArea( new Dimension(25, 0) ));
+        this.add(priceTxtFld);
+        this.add(javax.swing.Box.createRigidArea( new Dimension(25, 0) ));
         this.add(addBtn);
     }
+
+    // component behaviour methods:
 
     void setCustomizedColor(java.awt.Color base, java.awt.Color emphasized) {
         this.setBackground(base);

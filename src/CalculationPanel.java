@@ -72,7 +72,7 @@ public class CalculationPanel extends javax.swing.JPanel {
         resultPnl = new DataOutputPanel("Price");
         resultPnl.setBackground(mainWindow.getBaseColor());
 
-        // populate this calculationPanel
+        // populate this CalculationPanel
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
         this.add(materialCmbBox);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 5) ));
@@ -85,7 +85,7 @@ public class CalculationPanel extends javax.swing.JPanel {
         this.add(resultPnl);
     }
 
-    // component behaviour functions:
+    // component behaviour methods:
 
     void fillMaterialCmbBox() {
         materialCmbBox.removeAllItems();
