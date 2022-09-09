@@ -21,14 +21,14 @@ public class CalculationPanel extends javax.swing.JPanel {
         materialCmbBox.setMaximumSize( new java.awt.Dimension(180, 25) );
         materialCmbBox.setBackground(mainWindow.getBaseColor());
 
+        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
+
         materialCmbBox.addActionListener( new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 mainWindow.getDataStore().setCurrentMaterial(materialCmbBox.getSelectedIndex());
                 recalc();
             }
         });
-
-        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
         
         // set up choosenPriceLbl
         choosenPriceLbl = new javax.swing.JLabel();
