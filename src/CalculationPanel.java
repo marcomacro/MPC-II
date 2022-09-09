@@ -1,40 +1,57 @@
-import javax.swing.JPanel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class CalculationPanel extends JPanel {
-
+public class CalculationPanel extends javax.swing.JPanel {
+    
     private Window mainWindow;
-    private JComboBox<String> materialCmbBox;
-    private JLabel choosenPriceLbl;
+    
+    private javax.swing.JComboBox<String> materialCmbBox;
+    private javax.swing.JLabel choosenPriceLbl;
     private DataInputPanel heightPnl;
     private DataInputPanel widthPnl;
-    private DataOutputPanel resultPnl = new DataOutputPanel("Price");
-
+    private DataOutputPanel resultPnl;
+    
     public CalculationPanel(Window w) {
         mainWindow = w;
         
+        // set up materialCmbBox
+        materialCmbBox = new javax.swing.JComboBox<String>();
+        materialCmbBox.setMaximumSize( new java.awt.Dimension(180, 25) );
+        materialCmbBox.setBackground(mainWindow.getBaseColor());
+
+        materialCmbBox.addActionListener( new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                mainWindow.getDataStore().setCurrentMaterial(materialCmbBox.getSelectedIndex());
+                recalc();
+            }
+        });
+
+        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
+        
+        // set up choosenPriceLbl
+        choosenPriceLbl = new javax.swing.JLabel();
+        choosenPriceLbl.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+        
+        // set up heightPnl
         heightPnl = new DataInputPanel("Height", String.valueOf(mainWindow.getDataStore().getHeight()));
         heightPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
-        heightPnl.setActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
+
+        heightPnl.setActionListener( new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
                 try {
                     int value = Integer.parseInt(ae.getActionCommand());
                     if (value <= 0) throw new NumberFormatException();
                     mainWindow.getDataStore().setHeight(value);
                 } catch (NumberFormatException nfe) {
                     heightPnl.setValue(Integer.toString(mainWindow.getDataStore().getHeight()));
-                }
+                }    
                 recalc();
-            }
-        });
+            }    
+        });    
         
+        // set up widthPnl
         widthPnl = new DataInputPanel("Width", String.valueOf(mainWindow.getDataStore().getWidth()));
         widthPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
-        widthPnl.setActionListener( new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
+
+        widthPnl.setActionListener( new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
                 try {
                     int value = Integer.parseInt(ae.getActionCommand());
                     if (value <= 0) throw new NumberFormatException();
@@ -43,29 +60,19 @@ public class CalculationPanel extends JPanel {
                     widthPnl.setValue(Integer.toString(mainWindow.getDataStore().getWidth()));
                 }
                 recalc();
-            }
+            }    
         });
 
-        materialCmbBox = new JComboBox<String>();
-        fillMaterialCmbBox(mainWindow.getDataStore().getMaterialLst());
-        materialCmbBox.setMaximumSize(new java.awt.Dimension(180, 25));
-        materialCmbBox.setBackground(mainWindow.getBaseColor());
-        materialCmbBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                mainWindow.getDataStore().setCurrentMaterial(materialCmbBox.getSelectedIndex());
-                recalc();
-            }
-        });
-
-        choosenPriceLbl = new JLabel();
-        choosenPriceLbl.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
-
+        // set up resultPnl
+        resultPnl = new DataOutputPanel("Price");
         resultPnl.setBackground(mainWindow.getBaseColor());
 
+        // set up this container (CalculationPanel) ...
         this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
         this.setBackground(mainWindow.getBaseColor());
 
+        // ... and fill it
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
         this.add(materialCmbBox);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 5) ));
@@ -77,6 +84,8 @@ public class CalculationPanel extends JPanel {
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 55) ));
         this.add(resultPnl);
     }
+
+    // component behaviour functions:
 
     private void fillMaterialCmbBox(java.util.SortedMap<String, Float> materialLst) {
         for (String key : materialLst.keySet()) {
