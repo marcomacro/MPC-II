@@ -10,8 +10,8 @@ public class Window {
     private CalculationPanel calcPnl;
     private ConfigurationPanel configPnl;
 
-    public Window(DataStore ds) {
-        dataStore = ds;
+    public Window() {
+        dataStore = new DataStore();
 
         // set up the JFrame
         JFrame mpcFrame = new JFrame();
@@ -75,6 +75,10 @@ public class Window {
 
     Color getEmphasizedColor() {
         return emphasizedColor;
+    }
+
+    public static void main(String[] args) {
+        new Window();
     }
 
 }

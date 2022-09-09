@@ -1,8 +1,7 @@
-src/Main.java
 src/Window.java
-src/DataInputPanel.java
-src/DataOutputPanel.java
 src/NavPanel.java
 src/CalculationPanel.java
 src/ConfigurationPanel.java
+src/DataInputPanel.java
+src/DataOutputPanel.java
 src/DataStore.java
