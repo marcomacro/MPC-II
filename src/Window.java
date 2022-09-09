@@ -43,15 +43,15 @@ public class Window {
         recalc();
     }
 
-    public DataStore getDataStore() {
+    DataStore getDataStore() {
         return dataStore;
     }
 
-    public java.awt.Color getBaseColor() {
+    java.awt.Color getBaseColor() {
         return baseColor;
     }
 
-    public java.awt.Color getEmphasizedColor() {
+    java.awt.Color getEmphasizedColor() {
         return emphasizedColor;
     }
 

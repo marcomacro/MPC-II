@@ -19,7 +19,7 @@ class DataOutputPanel extends JPanel {
         this.add(resultLbl);
     }
 
-    public void setResult(String result) {
+    void setResult(String result) {
         resultLbl.setText(result);
     }
 
