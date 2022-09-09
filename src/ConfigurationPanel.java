@@ -10,6 +10,10 @@ public class ConfigurationPanel extends javax.swing.JPanel {
         this.setMaximumSize( new java.awt.Dimension(500, 800) );
         this.setBackground(mainWindow.getBaseColor());
         
+        build();
+    }
+
+    void build() {
         // get the list of materials
         java.util.TreeMap<String, Float> materialLst = mainWindow.getDataStore().getMaterialLst();
         java.util.Iterator<java.util.Map.Entry<String, Float>> i = materialLst.entrySet().iterator();
@@ -58,7 +62,12 @@ public class ConfigurationPanel extends javax.swing.JPanel {
             this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
             this.add(inputPnl);
         }
+
+        this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25)));
         
+        AddMaterialPanel addPnl = new AddMaterialPanel(mainWindow);
+        addPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
+        this.add(addPnl);
     }
 
 }

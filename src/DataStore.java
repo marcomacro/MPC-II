@@ -95,6 +95,7 @@ class DataStore {
     }
 
     public void setCurrentMaterial(int currentMaterial) {
+        if (currentMaterial < 0) currentMaterial = 0;
         this.currentMaterial = currentMaterial;
     }
 

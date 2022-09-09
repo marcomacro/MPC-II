@@ -4,4 +4,5 @@ src/CalculationPanel.java
 src/ConfigurationPanel.java
 src/DataInputPanel.java
 src/DataOutputPanel.java
+src/AddMaterialPanel.java
 src/DataStore.java

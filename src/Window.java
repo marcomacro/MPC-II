@@ -62,6 +62,14 @@ public class Window {
     void fillCalculationPanel() {
         calcPnl.recalc();
     }
+    
+    void rebuildConfigPnl() {
+        configPnl.removeAll();
+        configPnl.build();
+        configPnl.revalidate();
+        configPnl.repaint();
+        calcPnl.fillMaterialCmbBox();
+    }
 
     // getters:
 
