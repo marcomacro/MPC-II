@@ -50,7 +50,7 @@ public class ConfigurationPanel extends JPanel {
                         // set the DataInputPanel back to the previous value, due to it not beeing parsable
                         inputPnl.setValue(String.format(java.util.Locale.US, "%,.2f", materialLst.get(m.getKey())));
                     }
-                    mainWindow.recalc();
+                    mainWindow.fillCalculationPanel();
                 }
             });
 

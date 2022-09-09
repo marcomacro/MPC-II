@@ -1,59 +1,53 @@
+import java.awt.*;
 import javax.swing.*;
 
 public class Window {
 
     private DataStore dataStore;
-    private java.awt.Color baseColor = new java.awt.Color(253, 253, 172);
-    private java.awt.Color emphasizedColor = new java.awt.Color(202, 202, 65);
-    private JFrame mpc_frame = new JFrame();
-    private JPanel mainPnl = new JPanel();
-    private NavPanel navPnl = new NavPanel(this);
-    private JPanel contentPnl = new JPanel();
+    private Color baseColor = new Color(253, 253, 172);
+    private Color emphasizedColor = new Color(202, 202, 65);
+    
     private CalculationPanel calcPnl;
     private ConfigurationPanel configPnl;
 
     public Window(DataStore ds) {
         dataStore = ds;
 
-        mpc_frame.setTitle("Material Price Calculator II");
-        mpc_frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        mpc_frame.setSize(300, 400);
-        mpc_frame.setMinimumSize( new java.awt.Dimension(200, 300) );
-        mpc_frame.setContentPane(mainPnl);
-        mpc_frame.setVisible(true);
-        mpc_frame.addWindowListener(new java.awt.event.WindowAdapter() {
+        // set up the JFrame
+        JFrame mpcFrame = new JFrame();
+        mpcFrame.setTitle("Material Price Calculator II");
+        mpcFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mpcFrame.setSize(300, 400);
+        mpcFrame.setMinimumSize( new Dimension(200, 300) );
+        mpcFrame.addWindowListener( new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent we) {
                 dataStore.save();
             }
         });
+        mpcFrame.setVisible(true);
 
-        mainPnl.setLayout( new javax.swing.BoxLayout(mainPnl, javax.swing.BoxLayout.Y_AXIS) );
-        mainPnl.setMaximumSize( new java.awt.Dimension(500, 850) );
-        mainPnl.add(navPnl);
-        mainPnl.add(contentPnl);
+        // set up the contentPane
+        Container contentPane = mpcFrame.getContentPane();
+        JPanel contentPnl = new JPanel();
 
+        contentPane.setLayout( new BoxLayout(contentPane, BoxLayout.Y_AXIS) );
+        contentPane.setMaximumSize( new Dimension(500, 850) );
+        contentPane.add( new NavPanel(this) );
+        contentPane.add(contentPnl);
+
+        // populate the contentPnl (NOT contentPane)
         calcPnl = new CalculationPanel(this);
         configPnl = new ConfigurationPanel(this);
 
-        contentPnl.setLayout( new javax.swing.BoxLayout(contentPnl, javax.swing.BoxLayout.X_AXIS) );
+        contentPnl.setLayout( new BoxLayout(contentPnl, BoxLayout.X_AXIS) );
         contentPnl.add(calcPnl);
         contentPnl.add(configPnl);
         configPnl.setVisible(false);
 
-        recalc();
+        fillCalculationPanel();
     }
 
-    DataStore getDataStore() {
-        return dataStore;
-    }
-
-    java.awt.Color getBaseColor() {
-        return baseColor;
-    }
-
-    java.awt.Color getEmphasizedColor() {
-        return emphasizedColor;
-    }
+    // window behaviour methods:
 
     void switchView(String clickedPnl) {
         if (clickedPnl == "Calculate") {
@@ -65,8 +59,22 @@ public class Window {
         }
     }
 
-    void recalc() {
+    void fillCalculationPanel() {
         calcPnl.recalc();
+    }
+
+    // getters:
+
+    DataStore getDataStore() {
+        return dataStore;
+    }
+
+    Color getBaseColor() {
+        return baseColor;
+    }
+
+    Color getEmphasizedColor() {
+        return emphasizedColor;
     }
 
 }
