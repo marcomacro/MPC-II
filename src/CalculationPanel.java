@@ -11,6 +11,11 @@ public class CalculationPanel extends javax.swing.JPanel {
     public CalculationPanel(Window w) {
         mainWindow = w;
         
+        // set up this CalculationPanel
+        this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
+        this.setMaximumSize( new java.awt.Dimension(500, 800) );
+        this.setBackground(mainWindow.getBaseColor());
+
         // set up materialCmbBox
         materialCmbBox = new javax.swing.JComboBox<String>();
         materialCmbBox.setMaximumSize( new java.awt.Dimension(180, 25) );
@@ -67,12 +72,7 @@ public class CalculationPanel extends javax.swing.JPanel {
         resultPnl = new DataOutputPanel("Price");
         resultPnl.setBackground(mainWindow.getBaseColor());
 
-        // set up this container (CalculationPanel) ...
-        this.setLayout( new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS) );
-        this.setMaximumSize( new java.awt.Dimension(500, 800) );
-        this.setBackground(mainWindow.getBaseColor());
-
-        // ... and fill it
+        // populate this calculationPanel
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 25) ));
         this.add(materialCmbBox);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(0, 5) ));
