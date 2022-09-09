@@ -2,25 +2,32 @@ import javax.swing.*;
 
 class DataOutputPanel extends JPanel {
 
-    private JLabel lbl = new JLabel();
-    private JLabel resultLbl = new JLabel();
+    private JLabel nameLbl = new JLabel(); // name of outputted value
+    private JLabel outputLbl = new JLabel(); // value to output
 
     public DataOutputPanel(String title) {
+        
+        // set up this DataOutputPanel
         this.setLayout( new BoxLayout(this, BoxLayout.X_AXIS) );
 
-        lbl.setText(title + ":");
-        lbl.setMinimumSize(new java.awt.Dimension(50, 25));
-        lbl.setFont(new java.awt.Font("Dialog", 1, 24));
+        // set up nameLbl
+        nameLbl.setText(title + ":");
+        nameLbl.setMinimumSize(new java.awt.Dimension(50, 25));
+        nameLbl.setFont(new java.awt.Font("Dialog", 1, 24));
 
-        resultLbl.setFont(new java.awt.Font("Dialog", 1 , 24));
+        // set up outputLbl
+        outputLbl.setFont(new java.awt.Font("Dialog", 1 , 24));
 
-        this.add(lbl);
+        // populate this DataOutputPanel
+        this.add(nameLbl);
         this.add(javax.swing.Box.createRigidArea( new java.awt.Dimension(25, 0) ));
-        this.add(resultLbl);
+        this.add(outputLbl);
     }
 
+    // setters:
+
     void setResult(String result) {
-        resultLbl.setText(result);
+        outputLbl.setText(result);
     }
 
 }
