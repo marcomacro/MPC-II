@@ -74,7 +74,7 @@ class DataAddPanel extends JPanel {
         priceTxtFld.setBackground(base);
         priceTxtFld.setBorder(BorderFactory.createLineBorder(emphasized));
         addBtn.setBackground(base);
-        addBtn.setBorder(BorderFactory.createLineBorder(emphasized, 2));
+        addBtn.setBorder(BorderFactory.createLineBorder(emphasized));
     }
     
 }

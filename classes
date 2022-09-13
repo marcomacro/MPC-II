@@ -3,6 +3,7 @@ src/NavPanel.java
 src/CalculationPanel.java
 src/ConfigurationPanel.java
 src/DataInputPanel.java
+src/DeletableDIP.java
 src/DataOutputPanel.java
 src/DataAddPanel.java
 src/DataStore.java

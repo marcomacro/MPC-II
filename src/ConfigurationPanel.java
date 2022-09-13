@@ -22,7 +22,8 @@ public class ConfigurationPanel extends javax.swing.JPanel {
         while (i.hasNext()) {
             java.util.Map.Entry<String, Float> mapItem = (java.util.Map.Entry<String, Float>)i.next();
 
-            DataInputPanel inputPnl = new DataInputPanel(mapItem.getKey().toString(), String.format(java.util.Locale.US, "%,.2f", mapItem.getValue()));
+            // DataInputPanel inputPnl = new DataInputPanel(mapItem.getKey().toString(), String.format(java.util.Locale.US, "%,.2f", mapItem.getValue()));
+            DeletableDIP inputPnl = new DeletableDIP(mapItem.getKey().toString(), String.format(java.util.Locale.US, "%,.2f", mapItem.getValue()));
             inputPnl.setCustomizedColor(mainWindow.getBaseColor(), mainWindow.getEmphasizedColor());
 
             inputPnl.setActionListener( new java.awt.event.ActionListener() {
@@ -56,6 +57,13 @@ public class ConfigurationPanel extends javax.swing.JPanel {
                         inputPnl.setValue(String.format(java.util.Locale.US, "%,.2f", materialLst.get(mapItem.getKey())));
                     }
                     mainWindow.fillCalculationPanel();
+                }
+            });
+
+            inputPnl.setDeleteBtnActionListener( new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent ae) {
+                    mainWindow.getDataStore().getMaterialLst().remove(ae.getActionCommand());
+                    mainWindow.rebuildConfigPnl();
                 }
             });
 
