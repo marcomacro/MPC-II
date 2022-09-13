@@ -23,6 +23,7 @@ public class NavPanel extends JPanel implements java.awt.event.ActionListener {
         calculationBtn.setMaximumSize( new Dimension(250, 50) );
 
         calculationBtn.setBackground(mainWindow.getBaseColor());
+        calculationBtn.setOpaque(true);
         calculationBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, mainWindow.getEmphasizedColor()));
         calculationBtn.setFocusPainted(false);
         
@@ -36,6 +37,7 @@ public class NavPanel extends JPanel implements java.awt.event.ActionListener {
         configBtn.setMaximumSize( new Dimension(250, 50) );
         
         configBtn.setBackground(mainWindow.getBaseColor());
+        configBtn.setOpaque(true);
         configBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, mainWindow.getEmphasizedColor()));
         configBtn.setBorderPainted(false);
         configBtn.setFocusPainted(false);
